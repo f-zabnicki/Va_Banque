@@ -1,0 +1,22 @@
+<div class="container">
+    <h3>Ranking of all times:</h3>
+
+    <ul class="list-group" *ngFor="let user of usersRanking"  >
+        <li class="list-group-item">
+            
+            <table> 
+                <tr >
+                   
+                    <td>
+                        {{user.name}}
+                    </td>
+                    
+                    <td class="tdleft"> 
+                        {{user.sumOfPoints}}
+                    </td>
+                </tr>
+            </table>
+           </li>
+    </ul> 
+</div>
+

@@ -1,0 +1,48 @@
+<table>
+  <tr>
+    <td class="content-left">
+      <div class="btn-group-vertical mr-3">
+        <h1>Categories</h1>
+        <app-category-button
+        (categorySelectedEvent)="selectNewCategory($event)"
+        *ngFor="let number of categoriesNumbers"
+          [categories]="categories"
+          [index]="number"
+        ></app-category-button>
+      </div>
+    </td>
+    <td class="content-right">
+      <div class="btn-group-vertical mr-3">
+        <h1>Players</h1>
+        <app-user-button
+        (userSelectedEvent)="selectNewUser($event)"
+          *ngFor="let number of usersNumbers"
+          [users]="users"
+          [index]="number"
+        ></app-user-button>
+      </div>
+    </td>
+  </tr>
+  <tr class="spacer-height"></tr>
+  <tr>
+    <td class="content-left">
+      <button
+        class="btn btn-danger btn-lg align-bottom"
+        role="button"
+        aria-disabled="true"
+        (click)="cancelChoices" [routerLink]="['/va-banque/admin-main']"
+      >
+        Cancel
+      </button>
+    </td>
+    <td class="content-right">
+      <button
+        class="btn btn-success btn-lg align-bottom"
+        role="button"
+        aria-disabled="true" 
+        (click)="startGame()"> Create Game
+      </button>
+    </td>
+  </tr>
+</table>
+<router-outlet></router-outlet>

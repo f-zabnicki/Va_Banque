@@ -1,0 +1,13 @@
+<div
+  class="btn-group"
+  ngbDropdown
+  role="group"
+  aria-label="Button group with nested dropdown"
+>
+  <button class="btn btn-primary" style="margin-top: 15px" ngbDropdownToggle>
+    {{selectedUser ? selectedUser.name : 'Choose user'}}
+  </button>
+  <ul class="dropdown-menu" ngbDropdownMenu>
+    <li ngbDropdownItem *ngFor="let user of users" (click)="onElementClick(user)">{{ user.name }}</li>
+  </ul>
+</div>

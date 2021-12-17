@@ -1,0 +1,206 @@
+{
+  "quotes": [
+    {
+      "id": 1,
+      "quote": "Pivot! Pivot! Pivot! Pivot! Pivot!",
+      "character": "Ross"
+    },
+    {
+      "id": 2,
+      "quote": "Joey doesn't share food!",
+      "character": "Joey"
+    },
+    {
+      "id": 3,
+      "quote": "Guys can fake it? Unbelievable! The one thing that’s ours!",
+      "character": "Monica"
+    },
+    {
+      "id": 4,
+      "quote": "It's a moo point. It's like a cow's opinion; it doesn't matter. It's moo.",
+      "character": "Joey"
+    },
+    {
+      "id": 5,
+      "quote": "Yeah, that's right. I stepped up! She's my friend and she needed help. And if I have to I'd pee on any one of you.",
+      "character": "Joey"
+    },
+    {
+      "id": 6,
+      "quote": "But they don't know that we know they know we know!",
+      "character": "Phoebe"
+    },
+    {
+      "id": 7,
+      "quote": "This is brand-new information!",
+      "character": "Phoebe"
+    },
+    {
+      "id": 8,
+      "quote": "Phoebe. That's P, as in Phoebe, H as in hoebe, O as in oebe, E as in ebe, B as in bebe, and E as in 'Ello there mate.",
+      "character": "Phoebe"
+    },
+    {
+      "id": 9,
+      "quote": "I'm not so good with the advice. Can I interest you in a sarcastic comment?",
+      "character": "Chandler"
+    },
+    {
+      "id": 10,
+      "quote": "I got off the plane.",
+      "character": "Rachel"
+    },
+    {
+      "id": 11,
+      "quote": "How you doin?",
+      "character": "Joey"
+    },
+    {
+      "id": 12,
+      "quote": "I grew up in a house with Monica, okay. If you didn't eat fast, you didn't eat.",
+      "character": "Ross"
+    },
+    {
+      "id": 13,
+      "quote": "Unagi.",
+      "character": "Ross"
+    },
+    {
+      "id": 14,
+      "quote": "Smelly cat, smelly cat, what are they feeding you? Smelly cat, smelly cat, it's not your fault.",
+      "character": "Phoebe"
+    },
+    {
+      "id": 15,
+      "quote": "Just so you know, it's not that common, it doesn't happen to every guy, and it is a big deal!",
+      "character": "Rachel"
+    },
+    {
+      "id": 16,
+      "quote": "Here come the meat sweats.",
+      "character": "Joey"
+    },
+    {
+      "id": 17,
+      "quote": "Look at me! I'm Chandler! Could I be wearing any more clothes?!",
+      "character": "Joey"
+    },
+    {
+      "quote": "qwuipo",
+      "character": "sg",
+      "id": 18
+    },
+    {
+      "quote": "cfhgjvhj",
+      "character": "gyiukg",
+      "id": 19
+    },
+    {
+      "quote": "dasadw",
+      "character": "waas",
+      "id": 20
+    },
+    {
+      "quote": "dwqddwdw",
+      "character": "wdqw",
+      "id": 21
+    }
+  ],
+  "books": [
+    {
+      "id": 1,
+      "author": "Kolk Bessel van der",
+      "title": "Strach ucieleśniony",
+      "category": 5
+    },
+    {
+      "id": 2,
+      "author": "Porter-Szűcs Brian ",
+      "title": "Całkiem zwyczajny kraj. Historia Polski bez martyrologii",
+      "category": 3
+    },
+    {
+      "id": 3,
+      "author": "Lutz Mark",
+      "title": "Python. Wprowadzenie. Wydanie V",
+      "category": 4
+    },
+    {
+      "id": 4,
+      "author": "Bhargava Aditya",
+      "title": "Algorytmy. Ilustrowany przewodnik",
+      "category": 4
+    },
+    {
+      "id": 5,
+      "author": "Lanier Jaron",
+      "title": "Dziesięć powodów, dla których powinieneś natychmiast usunąć swoje konta z mediów społecznościowych",
+      "category": 3
+    },
+    {
+      "id": 6,
+      "author": "McKeown Greg",
+      "title": "Esencjalista",
+      "category": 3
+    },
+    {
+      "title": "Anna Karenina",
+      "author": "",
+      "id": 7,
+      "category": 2
+    },
+    {
+      "title": "Diuna",
+      "author": "",
+      "id": 8
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Kolk Bessel van der"
+    },
+    {
+      "id": 2,
+      "name": "Porter-Szűcs Brian "
+    },
+    {
+      "id": 3,
+      "name": "Lutz Mark"
+    },
+    {
+      "id": 4,
+      "name": "Bhargava Aditya"
+    },
+    {
+      "id": 5,
+      "name": "Lanier Jaron"
+    },
+    {
+      "id": 6,
+      "name": "McKeown Greg"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Komedia"
+    },
+    {
+      "id": 2,
+      "name": "Powieść"
+    },
+    {
+      "id": 3,
+      "name": "Esej"
+    },
+    {
+      "id": 4,
+      "name": "Programowanie"
+    },
+    {
+      "id": 5,
+      "name": "Literatura popularnonaukowa"
+    }
+  ]
+}

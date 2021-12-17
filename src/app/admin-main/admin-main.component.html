@@ -1,0 +1,43 @@
+<table>
+    <tr>
+        <td>
+           <h3>Categories:</h3>
+            <ul class="list-group" *ngFor="let category of categories" >
+                <li class="list-group-item">{{category.name}} <button (click)="removeCategory(category.id)" type="button" class="btn btn-danger pull-right"><i class="fa fa-times"></i></button></li>
+               
+              
+            </ul>
+            <button *ngIf='mode!="Category"' (click)="changeCategoryMode()"  class="btn btn-success pull-right" role="button" aria-disabled="true"> <i class="fa fa-plus"></i> Add category</button>
+           <app-add-category-and-user *ngIf='mode=="Category"'[Mode]="mode" (changeMode)="changeMode()" ></app-add-category-and-user>
+            
+        </td>
+        <td>
+            <h3>Questions:</h3>
+            
+            <button   type="button" class="btn btn-info text-white" role="button" aria-disabled="true" [routerLink]="['/va-banque/admin-main/questions']"> Show question list</button>
+            <button   class="btn btn-success pull-right" role="button" [routerLink]="['/va-banque/admin-main/new']" aria-disabled="true"> <i class="fa fa-plus"></i> Add question</button>
+        </td>
+        <td>
+            <h3>Users:</h3>
+            <ul class="list-group" *ngFor="let user of users" >
+                <li class="list-group-item"> {{user.name}} <button (click)="removeUser(user.id)" type="button" class="btn btn-danger pull-right"><i class="fa fa-times"></i></button></li>
+             
+              </ul>
+              <button *ngIf='mode!="User"' (click)="changeUserMode()"  class="btn btn-success pull-right" role="button" aria-disabled="true"> <i class="fa fa-plus"></i> Add User</button>
+              <app-add-category-and-user *ngIf='mode=="User"' [Mode]="mode" (changeMode)="changeMode()" ></app-add-category-and-user>
+        </td>
+        </tr>
+        <tr class="spacer-height"></tr>
+        <tr>
+            <td>
+            
+                 <button   class="btn btn-light pull-left align-bottom" role="button" aria-disabled="true" [routerLink]="['/va-banque/ranking']"> <i class="fa fa-eye"></i>L<i class="fa fa-eye" ></i><p>Show Ranking</p> </button>
+             </td>
+             <td class="spacer-width">
+             </td>
+             <td>
+                   <button   class="btn btn-dark pull-right align-bottom" role="button" aria-disabled="true" [routerLink]="['/va-banque/admin-main/game']"> <i class="fa fa-gamepad" ></i><p>Create the Game</p></button>
+             </td>
+        </tr>
+</table>
+<router-outlet></router-outlet>

@@ -1,0 +1,58 @@
+
+<div class="container">
+   
+
+    <h3>Add Question</h3>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="img-thumbnail">
+        <div class="form-group">
+            <label class="h5" for="exampleInputEmail1">Question</label>
+            <input formControlName="content" type="email" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp">
+
+        </div>
+
+        <div class="form-group">
+            <label class="h5" for="exampleInputPassword1">Answer</label>
+            <input type="text" formControlName="answer" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label class="h5" for="exampleInputEmail1">Category</label>
+            <select formControlName="categoryId"  class="form-control" aria-placeholder="Select category">
+                <option value="" selected disabled>Please select</option>
+                <ng-container *ngFor="let category of categories">
+                <option value={{category.id}}>{{category.name}}</option>
+               </ng-container>
+                
+               
+            </select>
+            
+        </div>
+       
+        <div class="form-group">
+            <label class="h5" for="exampleInputEmail1">Points</label>
+            <select formControlName="points" class="form-control" aria-placeholder="Points">
+                <option value="" selected disabled>Please select</option>
+                <option>100</option>
+                <option>150</option>
+                <option>200</option>
+                <option>250</option>
+                <option>300</option>
+            </select>
+
+        </div>
+        <p>
+            <button type="submit" [disabled]="!form.valid" class="btn btn-lg pull-right btn-success" >Add</button>
+            <button class="btn btn-lg btn-light" [routerLink]="['/va-banque/admin-main/questions']">Cancel</button>
+
+        </p>
+        <div *ngIf="createdMode" class="alert alert-primary" role="alert">
+            Question created successfully
+          </div>
+          <div *ngIf="errorMode" class="alert alert-danger" role="alert">
+            
+            An error occurred while creating the question
+          </div>
+    </form>
+</div>
+<router-outlet></router-outlet>
