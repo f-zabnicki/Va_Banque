@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, Subject } from 'rxjs';
 import { Player } from 'src/models/Player';
 import { Guid } from 'guid-typescript';
+import { Credentials } from 'src/models/Credentials';
 @Injectable({
   providedIn: 'root'
 })
@@ -28,5 +29,8 @@ export class UsersService {
   }
   remove(id: Guid): Observable<any> {
     return this.http.delete(`${this.url}/player/${id}`);
+  }
+  login(credentials: Credentials): Observable<any>{
+    return this.http.post(`${this.url}/player/login`, credentials);
   }
 }

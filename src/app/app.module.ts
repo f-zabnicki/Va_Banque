@@ -22,6 +22,8 @@ import { PlayerGameViewComponent } from './player-game-view/player-game-view.com
 import { RankingComponent } from './ranking/ranking.component';
 import { EditQuestionsComponent } from './edit-questions/edit-questions.component';
 import { AddQuestionsComponent } from './add-questions/add-questions.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { RegisterPageComponent } from './register-page/register-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,9 @@ import { AddQuestionsComponent } from './add-questions/add-questions.component';
     AdminQuestionsListComponent,
     EditQuestionsComponent,
     WhoYouAreComponent,
-    AddQuestionsComponent
+    AddQuestionsComponent,
+    LoginPageComponent,
+    RegisterPageComponent
   ],
   imports: [
     BrowserModule,

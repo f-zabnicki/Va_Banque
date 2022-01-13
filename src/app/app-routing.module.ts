@@ -9,6 +9,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminGameViewComponent } from './admin-game-view/admin-game-view.component';
 import { WhoYouAreComponent } from './who-you-are/who-you-are.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { RegisterPageComponent } from './register-page/register-page.component';
 
 const routes: Routes = [
   {path: "va-banque/admin-main/new", component: AddQuestionsComponent },
@@ -19,8 +21,9 @@ const routes: Routes = [
   {path: "va-banque/admin-main/play/:id", component: AdminGameViewComponent },
   {path: "va-banque/player/play/:id", component: PlayerGameViewComponent },
   {path: "va-banque/ranking", component: RankingComponent },
-  { path: "", component: WhoYouAreComponent, pathMatch: "full" },
-  { path: "**", component: WhoYouAreComponent },
+  {path: "register", component:RegisterPageComponent},
+  {path: "", component: LoginPageComponent, pathMatch: "full" },
+  {path: "**", component: LoginPageComponent },
 ];
 
 @NgModule({

@@ -1,0 +1,25 @@
+<div class="container">
+    <h1 class="WelcomeText">Registration</h1>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="UsernameInput">Username</label>
+            <input formControlName="name" type="text" class="form-control" id="name" placeholder="Enter username">
+        </div>
+        <div class="form-group">
+            <label for="EmailInput">Email</label>
+            <input formControlName="email" type="email" class="form-control" id="email" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label for="PasswordInput">Password</label>
+            <input formControlName="password" type="password" class="form-control" id="password" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary" ng>Submit</button>
+        <div *ngIf="createdMode" class="alert alert-primary" role="alert">
+            Registration made successfully.
+          </div>
+          <div *ngIf="errorMode" class="alert alert-danger" role="alert">
+            An error occurred in process of registration.
+          </div>
+    </form>
+    <button class="btn btn-secondary pull-right" [routerLink]="['/login']">Back to login page.</button>
+</div>
