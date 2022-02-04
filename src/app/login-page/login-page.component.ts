@@ -1,11 +1,9 @@
-import { Route } from '@angular/compiler/src/core';
 import { Component, NgModule, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, RouterLink, RouterModule, Routes } from '@angular/router';
-import { Credentials } from 'src/models/Credentials';
 import { Player } from 'src/models/Player';
+import { Role } from 'src/models/role';
 import { UsersService } from 'src/services/users.service';
-import { PlayerGameViewComponent } from '../player-game-view/player-game-view.component';
 
 @Component({
   selector: 'app-login-page',
@@ -13,10 +11,9 @@ import { PlayerGameViewComponent } from '../player-game-view/player-game-view.co
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
-  cr : Credentials = {username: "", password: ""};
   errorMode = false;
   loggedUser?: Player;
-  constructor(private http : UsersService, private router:Router) { }
+  constructor(private usersService : UsersService, private router:Router) { }
 
   form = new FormGroup({
     username: new FormControl('', Validators.required),
@@ -27,13 +24,16 @@ export class LoginPageComponent implements OnInit {
   }
   onSubmit(){
     console.log(this.form.value);
-    this.http.login(this.form.value).subscribe((player) =>{
+    localStorage.clear();
+    this.usersService.login(this.form.value).subscribe((player) =>{
       console.log(player);
       this.loggedUser = player;
-      // if(player.role == Role.ADMIN)
+      localStorage.setItem('role', player.role);
+      localStorage.setItem('id', player.id)
+      if(player.role == Role.ADMIN)
       this.router.navigate(['/va-banque/admin-main']);
-      // if(player.role == Role.PLAYER)
-      // this.router.navigate(['/'])
+      if(player.role == Role.USER)
+      this.router.navigate(['/va-banque/player/play'])
     },
     error=>{
       this.errorMode = true;

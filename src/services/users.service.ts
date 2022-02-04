@@ -33,4 +33,9 @@ export class UsersService {
   login(credentials: Credentials): Observable<any>{
     return this.http.post(`${this.url}/player/login`, credentials);
   }
+  logOut(id:Guid): Observable<any>{
+    console.log("---SERWIS---");
+    console.log(id);
+    return this.http.put(`${this.url}/player/logout`, id);
+  }
 }

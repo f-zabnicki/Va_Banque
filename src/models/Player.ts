@@ -1,4 +1,5 @@
 import { Guid } from "guid-typescript";
+import { Role } from "./role";
 
 export interface Player {
     id: Guid;
@@ -6,4 +7,5 @@ export interface Player {
     sumOfPoints: number;
     email?: string;
     password?: string;
+    role?: Role;
 }

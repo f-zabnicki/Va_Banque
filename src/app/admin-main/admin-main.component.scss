@@ -1,9 +1,19 @@
 table {
   width: 100%;
 }
+.AddButton{
+  background-color: rgb(19, 153, 19);
+  color: white;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
 
-td {
-  padding: 2% !important;
+.userListContainer{
+  margin-top: 20px;
+}
+
+td{
+  padding: 2% !important; 
 }
 
 li {

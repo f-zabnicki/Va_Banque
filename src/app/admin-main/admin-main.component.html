@@ -1,4 +1,65 @@
-<table>
+<mat-tab-group mat-align-tabs="start">
+    <mat-tab label="Create game">
+        <table>
+            <tr>
+                <td class="content-left">
+                    <div class="btn-group-vertical mr-3">
+                        <h1>Categories</h1>
+                        <app-category-button (categorySelectedEvent)="selectNewCategory($event)"
+                            *ngFor="let number of categoriesNumbers" [categories]="categories" [index]="number">
+                        </app-category-button>
+                    </div>
+                </td>
+                <td class="content-right">
+                    <div class="btn-group-vertical mr-3">
+                        <h1>Players</h1>
+                        <app-user-button (userSelectedEvent)="selectNewUser($event)" *ngFor="let number of usersNumbers"
+                            [users]="users" [index]="number"></app-user-button>
+                    </div>
+                </td>
+            </tr>
+            <tr class="spacer-height"></tr>
+            <tr>
+                <td class="content-left">
+                    <button class="btn btn-danger btn-lg align-bottom" role="button" aria-disabled="true"
+                        (click)="cancelChoices" [routerLink]="['/va-banque/admin-main']">
+                        Clear
+                    </button>
+                </td>
+                <td class="content-right">
+                    <button class="btn btn-success btn-lg align-bottom" role="button" aria-disabled="true"
+                        (click)="startGame()"> Create Game
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </mat-tab>
+    <mat-tab label="Game settings">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <button class="AddButton" mat-raised-button>Add Category</button>
+                        </div>
+                        <div class="col">
+                            <button class="AddButton" [routerLink]="['/va-banque/admin-main/new']" mat-raised-button>Add Question</button>
+                        </div>
+                    </div>
+                    <div class="row">   
+                        <div class="col">
+                            <app-categories-list></app-categories-list>
+                        </div>
+                        <div class="col">
+                            <app-questions-list></app-questions-list>
+                        </div>
+                    </div>
+                </div>
+    </mat-tab>
+    <mat-tab label="User management">
+            <app-user-details-list></app-user-details-list>
+    </mat-tab>
+</mat-tab-group>
+
+<!-- <table>
     <tr>
         <td>
            <h3>Categories:</h3>
@@ -39,5 +100,5 @@
                    <button   class="btn btn-dark pull-right align-bottom" role="button" aria-disabled="true" [routerLink]="['/va-banque/admin-main/game']"> <i class="fa fa-gamepad" ></i><p>Create the Game</p></button>
              </td>
         </tr>
-</table>
+</table> -->
 <router-outlet></router-outlet>

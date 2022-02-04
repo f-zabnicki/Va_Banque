@@ -1,0 +1,31 @@
+.emailField{
+    color: rgb(155, 157, 158);
+    float: right;
+    padding: 8px;
+    margin: 0px;
+}
+.navbar-container{
+    margin-left: 40px;
+}
+a{
+    color: rgb(155, 157, 158);
+}
+button {
+    background: none!important;
+    border: none;
+    padding: 8;
+    /*optional*/
+    font-family: arial, sans-serif;
+    /*input has OS specific font-family*/
+    color: rgb(155, 157, 158);
+    cursor: pointer;
+}:hover{
+    color: white;
+}
+.row{
+    width: 100%;
+}
+.col{
+    margin: 0px;
+    padding: 0px;
+}
