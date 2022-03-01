@@ -1,0 +1,29 @@
+<mat-tab-group mat-align-tabs="start">
+    <mat-tab label="Create game">
+        <app-create-game></app-create-game>
+    </mat-tab>
+    <mat-tab label="Game settings">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-4">
+                            <button class="AddButton" mat-raised-button>Add Category</button>
+                        </div>
+                        <div class="col">
+                            <button class="AddButton" [routerLink]="['/va-banque/admin-main/new']" mat-raised-button>Add Question</button>
+                        </div>
+                    </div>
+                    <div class="row">   
+                        <div class="col-4">
+                            <app-categories-list></app-categories-list>
+                        </div>
+                        <div class="col">
+                            <app-questions-list></app-questions-list>
+                        </div>
+                    </div>
+                </div>
+    </mat-tab>
+    <mat-tab label="User management">
+            <app-user-details-list></app-user-details-list>
+    </mat-tab>
+</mat-tab-group>
+<router-outlet></router-outlet>

@@ -14,11 +14,7 @@ export class PlayerInGameService {
     headers: new HttpHeaders({"Content-Type":"application-json"}),
   };
   putPlayerInGame(id: Guid, points: number): Observable<any> {
-    console.log(id);
-    console.log(points);
-    var request = this.http.put(`${this.url}/api/PlayerInGame/?id=${id}`, points);
-    console.log(request);
-    return request;
+    return this.http.put(`${this.url}/api/PlayerInGame/?id=${id}`, points);
   };
   putPlayerInDatabase(id: Guid, points: number):Observable<any>{
     return this.http.put(`${this.url}/api/PlayerInGame/?id=${id}`, points);
