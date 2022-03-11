@@ -31,6 +31,7 @@ export class LoginPageComponent implements OnInit {
       localStorage.setItem('role', player.role);
       localStorage.setItem('id', player.id)
       if(player.role == Role.ADMIN)
+      console.log("dochodzi")
       this.router.navigate(['/va-banque/admin-main']);
       if(player.role == Role.USER)
       this.router.navigate(['/va-banque/player/play'])

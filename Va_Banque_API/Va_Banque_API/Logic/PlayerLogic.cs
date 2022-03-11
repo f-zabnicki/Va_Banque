@@ -39,7 +39,7 @@ namespace Va_Banque_API.Logic
 
     public async Task<ICollection<PlayerDto>> GetPlayersAsync()
     {
-      var players = await _context.Players.ToListAsync();
+      var players = await _context.Players.Where(user => user.Role != Role.Admin).ToListAsync();
       var mappedPlayers = _mapper.Map<ICollection<Player>, ICollection<PlayerDto>>(players);
 
       return mappedPlayers;
@@ -59,7 +59,20 @@ namespace Va_Banque_API.Logic
       _mapper.Map<PlayerDto, Player>(playerDto, player);
       await _context.SaveChangesAsync();
     }
+    public async Task<Player> LoginPlayer(Credentials userCredentials)
+    {
+      var player = await _context.Players.FirstOrDefaultAsync(p => p.Name == userCredentials.Username && p.Password == userCredentials.Password);
+      player.LoggedIn = true;
+      await _context.SaveChangesAsync();
+      return player;
+    }
 
- 
+    public async Task<List<int>> GetBestUserScores(Guid id)
+    {
+      return await _context.PlayersInGame.Where(p => p.Player.Id == id)
+                                         .OrderByDescending(p=>p.Points)
+                                         .Select(p=> p.Points)
+                                         .Take(10).ToListAsync();
+    }
   }
 }

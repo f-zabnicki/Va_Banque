@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Va_Banque_API.DtoModels;
 using Va_Banque_API.Interfaces;
+using Va_Banque_API.Models;
 
 namespace Va_Banque_API.Controllers
 {
@@ -69,6 +70,22 @@ namespace Va_Banque_API.Controllers
     public async Task UpdatePlayer(PlayerDto playerDto)
     {
        await _playerLogic.UpdatePlayerAsync(playerDto);
+    }
+
+    [HttpPost]
+    [Route("login")]
+    public async Task<Player> LoginUser(Credentials credentials)
+    {
+      var player = await _playerLogic.LoginPlayer(credentials);
+      return player;
+    }
+
+    [HttpGet]
+    [Route("best")]
+    public async Task<List<int>> GetBestUserScores(Guid id)
+    {
+      var list = await _playerLogic.GetBestUserScores(id);
+      return list;
     }
   }
 }

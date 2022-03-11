@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Va_Banque_API.DtoModels;
+using Va_Banque_API.Models;
 
 namespace Va_Banque_API.Interfaces
 {
@@ -13,5 +14,7 @@ namespace Va_Banque_API.Interfaces
     Task CreatePlayerAsync(PlayerDto playerForAddDto);
     Task DeletePlayerAsync(Guid id);
     Task UpdatePlayerAsync(PlayerDto playerDto);
+    Task<Player> LoginPlayer(Credentials userCredentials);
+    Task<List<int>> GetBestUserScores(Guid id);
   }
 }

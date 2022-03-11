@@ -13,6 +13,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { AdminViewGuard } from 'src/guard/admin-view.guard';
 import { PlayerViewGuard } from 'src/guard/player-view.guard';
+import { PlayerWaitingViewComponent } from './player-waiting-view/player-waiting-view.component';
 
 const routes: Routes = [
   {path: "va-banque/admin-main/new", component: AddQuestionsComponent, canActivate:[AdminViewGuard] },
@@ -22,7 +23,7 @@ const routes: Routes = [
   {path: "va-banque/admin-main/game", component: CreateGameComponent, canActivate:[AdminViewGuard] },
   {path: "va-banque/admin-main/play/:id", component: AdminGameViewComponent, canActivate:[AdminViewGuard] },
   {path: "va-banque/player/play/:id", component: PlayerGameViewComponent, canActivate:[PlayerViewGuard] },
-  {path: "va-banque/player/play", component: PlayerGameViewComponent, canActivate:[PlayerViewGuard] },
+  {path: "va-banque/player/play", component: PlayerWaitingViewComponent, canActivate:[PlayerViewGuard] },
   {path: "va-banque/ranking", component: RankingComponent },
   {path: "register", component:RegisterPageComponent},
   {path: "", component: LoginPageComponent, pathMatch: "full" },

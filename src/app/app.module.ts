@@ -30,6 +30,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserDetailsListComponent } from './user-details-list/user-details-list.component';
 import { CategoriesListComponent } from './categories-list/categories-list.component';
 import { QuestionsListComponent } from './questions-list/questions-list.component';
+import { PlayerWaitingViewComponent } from './player-waiting-view/player-waiting-view.component';
+import { MyRankingComponent } from './my-ranking/my-ranking.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +52,9 @@ import { QuestionsListComponent } from './questions-list/questions-list.componen
     NavbarComponent,
     UserDetailsListComponent,
     CategoriesListComponent,
-    QuestionsListComponent
+    QuestionsListComponent,
+    PlayerWaitingViewComponent,
+    MyRankingComponent
   ],
   imports: [
     BrowserModule,
