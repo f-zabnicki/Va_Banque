@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Guid } from 'guid-typescript';
 import { Player } from 'src/models/Player';
 import { UsersService } from 'src/services/users.service';
+import { PlayerGameViewComponent } from '../player-game-view/player-game-view.component';
 
 @Component({
   selector: 'app-navbar',
@@ -12,6 +13,7 @@ import { UsersService } from 'src/services/users.service';
 export class NavbarComponent implements OnInit {
 
   user?: Player;
+  isPlayerlogged: boolean = false
   guid?: Guid;
   localStorageValue?: string | null;
   constructor( private userService : UsersService,  private router:Router) { }
@@ -29,14 +31,16 @@ export class NavbarComponent implements OnInit {
   }
   GetUser(){
     this.userService.getUser(this.guid!).subscribe((user)=>{
+      this.isPlayerlogged = true;
       this.user = user;
     })
   }
 
   Logout(){
     if(this.user != null){
-      console.log(this.user.id);
       this.userService.logOut(this.user.id).subscribe(()=>{
+        localStorage.clear();
+        this.isPlayerlogged = false;
         this.router.navigate(['']);
       })
     }

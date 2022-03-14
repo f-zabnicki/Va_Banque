@@ -9,6 +9,7 @@ import { Credentials } from 'src/models/Credentials';
 })
 export class UsersService {
   url = "http://localhost:7272/api";
+  isUserLoggedIn = false;
   updateListOfUsers$: Subject<Player> = new Subject<Player>();
   constructor(private http: HttpClient) { }
   httpOptions={
