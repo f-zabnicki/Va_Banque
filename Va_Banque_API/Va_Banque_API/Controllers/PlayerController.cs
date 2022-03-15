@@ -1,11 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Va_Banque_API.DtoModels;
 using Va_Banque_API.Interfaces;
-using Va_Banque_API.Models;
 
 namespace Va_Banque_API.Controllers
 {
@@ -22,17 +19,17 @@ namespace Va_Banque_API.Controllers
     [HttpGet]
     public async Task<IActionResult> GetPlayersAsync()
     {
-      try {
+      try
+      {
         var players = await _playerLogic.GetPlayersAsync();
         return Ok(players);
-      } 
-      catch(InvalidOperationException e)
+      }
+      catch (InvalidOperationException e)
       {
         return BadRequest(e.Message);
       }
-      
-
     }
+
     [HttpGet("{id}")]
     public async Task<IActionResult> GetPlayerAsync(Guid id)
     {
@@ -45,12 +42,11 @@ namespace Va_Banque_API.Controllers
       {
         return BadRequest(e.Message);
       }
-      
     }
+
     [HttpPost]
     public async Task<IActionResult> CreatePlayerAsync([FromBody] PlayerDto playerForAddDto)
     {
-     
       try
       {
         await _playerLogic.CreatePlayerAsync(playerForAddDto);
@@ -62,22 +58,46 @@ namespace Va_Banque_API.Controllers
       }
     }
     [HttpDelete("{id}")]
-    public async Task RemovePlayer(Guid id)
+    public async Task<IActionResult> RemovePlayer(Guid id)
     {
+      try
+      {
         await _playerLogic.DeletePlayerAsync(id);
+        return Ok();
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+
     }
     [HttpPut("{id}")]
-    public async Task UpdatePlayer(PlayerDto playerDto)
+    public async Task<IActionResult> UpdatePlayer(PlayerDto playerDto)
     {
-       await _playerLogic.UpdatePlayerAsync(playerDto);
+      try
+      {
+        await _playerLogic.UpdatePlayerAsync(playerDto);
+        return Ok();
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
     }
 
     [HttpGet]
     [Route("best")]
-    public async Task<List<int>> GetBestUserScores(Guid id)
+    public async Task<IActionResult> GetBestUserScores(Guid id)
     {
-      var list = await _playerLogic.GetBestUserScores(id);
-      return list;
+      try
+      {
+        var list = await _playerLogic.GetBestUserScores(id);
+        return Ok(list);
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
     }
   }
 }
