@@ -59,13 +59,6 @@ namespace Va_Banque_API.Logic
       _mapper.Map<PlayerDto, Player>(playerDto, player);
       await _context.SaveChangesAsync();
     }
-    public async Task<Player> LoginPlayer(Credentials userCredentials)
-    {
-      var player = await _context.Players.FirstOrDefaultAsync(p => p.Name == userCredentials.Username && p.Password == userCredentials.Password);
-      player.LoggedIn = true;
-      await _context.SaveChangesAsync();
-      return player;
-    }
 
     public async Task<List<int>> GetBestUserScores(Guid id)
     {

@@ -72,14 +72,6 @@ namespace Va_Banque_API.Controllers
        await _playerLogic.UpdatePlayerAsync(playerDto);
     }
 
-    [HttpPost]
-    [Route("login")]
-    public async Task<Player> LoginUser(Credentials credentials)
-    {
-      var player = await _playerLogic.LoginPlayer(credentials);
-      return player;
-    }
-
     [HttpGet]
     [Route("best")]
     public async Task<List<int>> GetBestUserScores(Guid id)
