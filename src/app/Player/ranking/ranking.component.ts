@@ -10,16 +10,19 @@ import { UsersService } from 'src/services/users.service';
 })
 export class RankingComponent implements OnInit {
 
-  constructor(private userServise: UsersService) { }
-
   usersRanking: Player[]=[];
+  isLoadingResults: boolean = true;
+  resultsLength: Number = 0;
+  displayedColumns: string[] = [ 'name', 'points' ];
   
+  constructor(private userServise: UsersService) { }
 
   ngOnInit(): void {
     this.getUsers();
   }
   getUsers(){
     this.userServise.getAllUsers().subscribe((users: Player[])=>{
+      console.log(users);
       this.usersRanking = users;
       this.usersRanking.sort((a,b)=> a.sumOfPoints-b.sumOfPoints).reverse();
     })

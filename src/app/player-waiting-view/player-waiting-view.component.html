@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="topbar">
+        <h2 class="gameInfo">No game available...</h2>
+        <button class="btn btn-success btn-lg" role="button" aria-disabled="true" (click)="joinGame()" [disabled]="!isGameAvailable ? 'disabled': null">
+            Join the game
+        </button>
+    </div>
+    <mat-tab-group mat-align-tabs="start">
+        <mat-tab label="My Highscores">
+            <app-my-ranking></app-my-ranking>
+        </mat-tab>
+
+        <mat-tab label="Global Highscores">
+            <app-ranking></app-ranking>
+        </mat-tab>
+
+    </mat-tab-group>
+</div>

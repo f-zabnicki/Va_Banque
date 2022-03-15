@@ -21,19 +21,26 @@ export class LoginPageComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    //Implementation of logging when user was logged and his data is in local storage
+    // if(localStorage.getItem('id') != null){
+    //   this.usersService.
+    // }
   }
   onSubmit(){
     console.log(this.form.value);
     localStorage.clear();
     this.usersService.login(this.form.value).subscribe((player) =>{
       console.log(player);
+      this.usersService.isUserLoggedIn = true;
       this.loggedUser = player;
       localStorage.setItem('role', player.role);
-      localStorage.setItem('id', player.id)
+      localStorage.setItem('id', player.id);
+      localStorage.setItem('email', player.email);
       if(player.role == Role.ADMIN)
+      console.log("dochodzi");
       this.router.navigate(['/va-banque/admin-main']);
       if(player.role == Role.USER)
-      this.router.navigate(['/va-banque/player/play'])
+      this.router.navigate(['/va-banque/player/play']);
     },
     error=>{
       this.errorMode = true;

@@ -9,6 +9,7 @@ import { Credentials } from 'src/models/Credentials';
 })
 export class UsersService {
   url = "http://localhost:7272/api";
+  isUserLoggedIn = false;
   updateListOfUsers$: Subject<Player> = new Subject<Player>();
   constructor(private http: HttpClient) { }
   httpOptions={
@@ -34,8 +35,9 @@ export class UsersService {
     return this.http.post(`${this.url}/player/login`, credentials);
   }
   logOut(id:Guid): Observable<any>{
-    console.log("---SERWIS---");
-    console.log(id);
     return this.http.put(`${this.url}/player/logout`, id);
+  }
+  getMyHighestScores(id:Guid): Observable<any>{
+    return this.http.get(`${this.url}/player/best?id=${id}`)
   }
 }
