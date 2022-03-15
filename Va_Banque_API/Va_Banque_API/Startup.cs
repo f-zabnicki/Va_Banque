@@ -59,6 +59,7 @@ namespace Va_Banque_API
       services.AddScoped<IQuestionsInGameLogic, QuestionsInGameLogic>();
       services.AddScoped<IGameLogic, GameLogic>();
       services.AddScoped<IQuestionLogic, QuestionLogic>();
+      services.AddScoped<IAccountLogic, AccountLogic>();
 
       services.AddCors();
     }

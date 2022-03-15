@@ -19,15 +19,30 @@ namespace Va_Banque_API.Controllers
       _questionsInGameLogic = questionsInGameLogic;
     }
     [HttpPut]
-    public async Task ChangeQuestionStatus(Guid id, [FromBody] bool correct)
+    public async Task<IActionResult> ChangeQuestionStatus(Guid id, [FromBody] bool correct)
     {
-      await _questionsInGameLogic.ChangeQuestionStatusAsync(id, correct);
+      try
+      {
+        await _questionsInGameLogic.ChangeQuestionStatusAsync(id, correct);
+        return Ok();
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e);
+      }
     }
     [HttpGet]
-    public async Task<List<QuestionInGame>> GetQuestionsAsync(Guid id)
+    public async Task<IActionResult> GetQuestionsAsync(Guid id)
     {
-      return await _questionsInGameLogic.GetQuestionsAsync(id);
+      try
+      {
+        var list = await _questionsInGameLogic.GetQuestionsAsync(id);
+        return Ok(list);
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
     }
-
   }
 }

@@ -14,20 +14,35 @@ namespace Va_Banque_API.Controllers
 
     public GameController(IGameLogic gameLogic)
     {
-        _gameLogic = gameLogic;
+      _gameLogic = gameLogic;
     }
 
     [HttpGet("{id}")]
-    public async Task<GameDto> GetGameAsync(Guid id)
+    public async Task<IActionResult> GetGameAsync(Guid id)
     {
-        return await _gameLogic.GetGameAsync(id);
+      try
+      {
+        var gameId = await _gameLogic.GetGameAsync(id);
+        return Ok(gameId);
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
     }
 
     [HttpPost]
-    public async Task<Guid> CreateGameAsync(GameToCreateDto gameToCreateDto)
+    public async Task<IActionResult> CreateGameAsync(GameToCreateDto gameToCreateDto)
     {
-        return await _gameLogic.CreateGameAsync(gameToCreateDto);
-        //var xd = CreatedAtAction(nameof(GetGameAsync), new { id = gameToCreateDto.Id }, gameToCreateDto);
+      try
+      {
+        var gameId = await _gameLogic.CreateGameAsync(gameToCreateDto);
+        return Ok(gameId);
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
     }
 
     [HttpPut("{id}")]
@@ -38,7 +53,7 @@ namespace Va_Banque_API.Controllers
         await _gameLogic.DeleteGameAsync(id);
         return Ok();
       }
-      catch(Exception e)
+      catch (Exception e)
       {
         return BadRequest(e.Message);
       }

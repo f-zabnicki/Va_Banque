@@ -19,27 +19,59 @@ namespace Va_Banque_API.Controllers
     }
 
     [HttpGet]
-    public async Task<List<CategoryDto>> GetCategoriesAsync()
+    public async Task<IActionResult> GetCategoriesAsync()
     {
-      return await _categoryLogic.GetCategoriesAsync();
+      try
+      {
+        var categories = await _categoryLogic.GetCategoriesAsync();
+        return Ok(categories);
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
     }
 
     [HttpGet("{id}")]
-    public async Task<CategoryDto> GetCategoryAsync(Guid id)
+    public async Task<IActionResult> GetCategoryAsync(Guid id)
     {
-      return await _categoryLogic.GetCategoryAsync(id);
+      try
+      {
+        var category = await _categoryLogic.GetCategoryAsync(id);
+        return Ok(category);
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
     }
 
     [HttpPost]
-    public async Task CreateCategoryAsync(CategoryDto categoryDto)
+    public async Task<IActionResult> CreateCategoryAsync(CategoryDto categoryDto)
     {
-      await _categoryLogic.CreateCategoryAsync(categoryDto);
+      try
+      {
+        await _categoryLogic.CreateCategoryAsync(categoryDto);
+        return Ok();
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
     }
 
     [HttpDelete("{id}")]
-    public async Task RemoveCategory(Guid id)
+    public async Task<IActionResult> RemoveCategory(Guid id)
     {
-      await _categoryLogic.DeleteCategoryAsync(id);
+      try
+      {
+        await _categoryLogic.DeleteCategoryAsync(id);
+        return Ok();
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
     }
   }
 }

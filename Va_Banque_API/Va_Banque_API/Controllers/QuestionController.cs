@@ -19,33 +19,73 @@ namespace Va_Banque_API.Controllers
     }
 
     [HttpGet]
-    public async Task<List<QuestionDto>> GetQuestionsAsync()
+    public async Task<IActionResult> GetQuestionsAsync()
     {
-      return await _questionLogic.GetQuestionsAsync();
+      try
+      {
+        var list = await _questionLogic.GetQuestionsAsync();
+        return Ok(list);
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
     }
 
     [HttpGet("{id}")]
-    public async Task<QuestionDto> GetQuestionAsync(Guid id)
+    public async Task<IActionResult> GetQuestionAsync(Guid id)
     {
-      return await _questionLogic.GetQuestionAsync(id);
+      try
+      {
+        var question = await _questionLogic.GetQuestionAsync(id);
+        return Ok(question);
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
     }
 
     [HttpPost]
-    public async Task CreateQuestionAsync(QuestionDto questionDto)
+    public async Task<IActionResult> CreateQuestionAsync(QuestionDto questionDto)
     {
-      await _questionLogic.CreateQuestionAsync(questionDto);
+      try
+      {
+        await _questionLogic.CreateQuestionAsync(questionDto);
+        return Ok();
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
     }
 
     [HttpPut("{id}")]
-    public async Task EditQuestionAsync(QuestionDto questionDto)
+    public async Task<IActionResult> EditQuestionAsync(QuestionDto questionDto)
     {
-      await _questionLogic.EditQuestionAsync(questionDto);
+      try
+      {
+        await _questionLogic.EditQuestionAsync(questionDto);
+        return Ok();
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
     }
 
     [HttpDelete("{id}")]
-    public async Task DeleteQuestionAsync(Guid id)
+    public async Task<IActionResult> DeleteQuestionAsync(Guid id)
     {
-      await _questionLogic.DeleteQuestionAsync(id);
+      try
+      {
+        await _questionLogic.DeleteQuestionAsync(id);
+        return Ok();
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
     }
   }
 }

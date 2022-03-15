@@ -18,9 +18,17 @@ namespace Va_Banque_API.Controllers
     }
 
     [HttpPut]
-    public async Task AddPointsToUserAsync(Guid id, [FromBody]int points)
+    public async Task<IActionResult> AddPointsToUserAsync(Guid id, [FromBody]int points)
     {
-      await _playerInGameLogic.AddPointsToUserAsync(id,points);
+      try
+      {
+        await _playerInGameLogic.AddPointsToUserAsync(id, points);
+        return Ok();
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
     }
 
     //[HttpPut]
