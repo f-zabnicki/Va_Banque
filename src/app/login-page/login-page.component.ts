@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, RouterLink, RouterModule, Routes } from '@angular/router';
 import { Player } from 'src/models/Player';
 import { Role } from 'src/models/role';
-import { UsersService } from 'src/services/users.service';
+import { UsersService } from 'src/services/User/users.service';
 
 @Component({
   selector: 'app-login-page',

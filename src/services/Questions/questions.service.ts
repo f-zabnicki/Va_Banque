@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
-import { Observable, Subject, throwError } from "rxjs";
-import { catchError, share } from "rxjs/operators";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Observable, throwError } from "rxjs";
+import { catchError } from "rxjs/operators";
+import { HttpClient} from "@angular/common/http";
 import { Guid } from "guid-typescript";
 
 @Injectable({

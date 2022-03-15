@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Guid } from 'guid-typescript';
 import { Question } from 'src/models/Question';
-import { CategoryService } from 'src/services/category.service';
-import { QuestionsService } from 'src/services/questions.service';
+import { QuestionsService } from 'src/services/Questions/questions.service';
 
 @Component({
   selector: 'app-questions-list',

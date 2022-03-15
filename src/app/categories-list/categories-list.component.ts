@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Guid } from 'guid-typescript';
 import { Category } from 'src/models/category';
-import { CategoryService } from 'src/services/category.service';
+import { CategoryService } from 'src/services/Category/category.service';
 
 @Component({
   selector: 'app-categories-list',

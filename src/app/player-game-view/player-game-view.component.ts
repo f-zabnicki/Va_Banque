@@ -1,12 +1,12 @@
-import { CategoryService } from 'src/services/category.service';
 import { Component, OnInit } from '@angular/core';
 import { QuestionInGame } from 'src/models/QuestionInGame';
 import { PlayerInGame } from 'src/models/PlayerInGame';
-import { GameService } from 'src/services/game-service.service';
 import { Game } from 'src/models/Game';
 import { Guid } from 'guid-typescript';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/models/category';
+import { CategoryService } from 'src/services/Category/category.service';
+import { GameService } from 'src/services/Game-service/game-service.service';
 
 @Component({
   selector: 'app-player-game-view',
@@ -17,7 +17,6 @@ export class PlayerGameViewComponent implements OnInit {
   constructor(
     private httpGame: GameService,
     private route: ActivatedRoute,
-    private router: Router,
     private categoryService: CategoryService
   ) {}
 
@@ -27,7 +26,6 @@ export class PlayerGameViewComponent implements OnInit {
   users: PlayerInGame[] = [];
   isGame: boolean = true;
   gameid: Guid = Guid.createEmpty();
-  //DODAC LISTE Z PYTANIAMI I Z USERAMI Z API
   ngOnInit(): void {
     this.questionListener();
     this.httpGame.getGame(this.gameid).subscribe((game: Game) => {
@@ -44,17 +42,6 @@ export class PlayerGameViewComponent implements OnInit {
           this.allCategories?.push(category!);
         }
       });
-      /*
-      for (var i = 0; i < 5; i++) {
-        // this.categoryService
-        //   .getCategory(this.array[i].question.categoryId)
-        //   .subscribe((cat) => {
-        //     this.allCategories.push(cat);
-        //     console.log(cat);
-        //   });
-      }
-      //this.allCategories.sort((a,b)=> this.sortCategories(a,b));
-      */
     });
   }
   questionListener(): void {

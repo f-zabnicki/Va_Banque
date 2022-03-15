@@ -1,16 +1,13 @@
-import { QuestionsService } from 'src/services/questions.service';
-import { CategoryService } from './../../services/category.service';
-import { AddEditQuestionsService } from './../../services/add-edit-questions.service';
-
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { of, Subject } from 'rxjs';
-import { concatMap, takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Guid } from 'guid-typescript';
 import { Category } from 'src/models/category';
 import { QuestionTest } from 'src/models/questionTest';
-import { Question } from 'src/models/Question';
+import { AddEditQuestionsService } from 'src/services/Add-edit-question/add-edit-questions.service';
+import { CategoryService } from 'src/services/Category/category.service';
 
 @Component({
   selector: 'app-edit-questions',

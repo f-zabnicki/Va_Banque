@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
-import { Game } from 'src/models/Game';
 import { GameToCreateData } from 'src/models/GameToCreateData';
 
 @Injectable({

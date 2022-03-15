@@ -1,8 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router, Routes } from '@angular/router';
+import { Router} from '@angular/router';
 import { Subscription } from 'rxjs';
-import { UsersService } from 'src/services/users.service';
+import { UsersService } from 'src/services/User/users.service';
 
 @Component({
   selector: 'app-register-page',

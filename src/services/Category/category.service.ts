@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Guid } from 'guid-typescript';
 import { Observable, Subject } from 'rxjs';
-import { Category } from '../models/category';
+import { Category } from 'src/models/category';
 
 @Injectable({
   providedIn: 'root'

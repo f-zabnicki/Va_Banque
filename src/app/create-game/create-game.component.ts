@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Guid } from 'guid-typescript';
 import { Category } from 'src/models/category';
-import { Game } from 'src/models/Game';
 import { GameToCreateData } from 'src/models/GameToCreateData';
 import { Player } from 'src/models/Player';
-import { CategoryService } from 'src/services/category.service';
-import { GameService } from 'src/services/game-service.service';
-import { UsersService } from 'src/services/users.service';
-import { getTsBuildInfoEmitOutputFilePath } from 'typescript';
+import { CategoryService } from 'src/services/Category/category.service';
+import { GameService } from 'src/services/Game-service/game-service.service';
+import { UsersService } from 'src/services/User/users.service';
 
 @Component({
   selector: 'app-create-game',
@@ -19,31 +17,11 @@ export class CreateGameComponent implements OnInit {
   game? :GameToCreateData = undefined;
   categoriesNumbers = [0, 1, 2, 3, 4];
   categories: Category[] = [];
-  
-  /*[
-    { id: Guid.create(), name: "WŁADCY POLSKI"},
-    { id: Guid.create(), name: "REKORDY GEOGRAFICZNE"},
-    { id: Guid.create(), name: "REKORDY ŚWIATA ZWIERZĄT"},
-    { id: Guid.create(), name: "GWIAZDY I PLANETY"},
-    { id: Guid.create(), name: "FILMY"},
-    { id: Guid.create(), name: "POLSCY MEDALIŚCI OLIMPIJSCY"}
-  ];
-  */
-
   availableCategories: Category[] = [];
   selectedCategories: Category[] = [];
-
   idOfCreatedGame :Guid = Guid.createEmpty();
-
   usersNumbers = [0, 1, 2]
   users: Player[] = [];
-  /* = [
-    { id: Guid.create(), name: "Patryk" ,sumOfPoints: 100},
-    { id: Guid.create(), name: "Maja", sumOfPoints: 100},
-    { id: Guid.create(), name: "Filip", sumOfPoints: 100},
-    { id: Guid.create(), name: "Marcin", sumOfPoints: 100}
-  ];
-  */
   availableUsers: Player[];
   selectedUsers: Player[];
 
@@ -66,17 +44,6 @@ export class CreateGameComponent implements OnInit {
   ngOnInit(): void {
     this.loadCategories();
     this.loadPlayers();
-    //this.categories.forEach(val => this.availableCategories.push(Object.assign({}, val)));
-    //this.users.forEach(val => this.availableUsers.push(Object.assign({}, val)));
-    //console.log(this.categories);
-    //this.availableCategories = [...this.categories];
-    /*
-    this.categories.forEach((category) => {
-      this.availableCategories.push(category);
-    });
-    console.log(this.availableCategories);
-    this.availableUsers = [...this.users];
-    */
   }
 
   cancelChoices(){
@@ -85,7 +52,6 @@ export class CreateGameComponent implements OnInit {
   
   loadCategories(){
     this.categoriesService.getAllCategories().subscribe((categories : Category[]) => {
-      //this.categories = [...categories];
       categories.forEach((category) => {
         this.categories.push(category);
         this.availableCategories.push(category);
@@ -95,7 +61,6 @@ export class CreateGameComponent implements OnInit {
 
   loadPlayers(){
     this.playerService.getAllUsers().subscribe((users: Player[]) => {
-      //this.users = [...users];    
       users.forEach((user) => {
         this.users.push(user);
         this.availableUsers.push(user);
@@ -109,9 +74,7 @@ export class CreateGameComponent implements OnInit {
     this.gameService.postGame(this.game).subscribe((id:Guid)=>{ 
       this.idOfCreatedGame = id;
       window.location.href = '/va-banque/admin-main/play/' + id;
-      //[routerLink]="['/va-banque/admin-main/play']"
     });
-    //[routerLink]="['./adin-main', gameId.id]"
   }
 
   selectNewCategory(categoryDropdown: [Category, number]){
@@ -126,10 +89,8 @@ export class CreateGameComponent implements OnInit {
   }
 
   refreshAvailableCategories(){
-    //this.availableCategories = [...this.categories];
     this.availableCategories = [];
     this.categories.forEach(val => this.availableCategories.push(Object.assign({}, val)));
-
     this.selectedCategories.forEach(selectedCategory => {      
       if(selectedCategory.name !== "unknown"){
           this.removeFromAvailableCategories(selectedCategory);
@@ -147,19 +108,15 @@ export class CreateGameComponent implements OnInit {
   selectNewUser(userDropdown: [Player, number]){
     var user = userDropdown[0];
     var number = userDropdown[1];
-
     if(number > -1 && number < 3){
       this.selectedUsers.splice(number, 1, user);
     }
-
     this.refreshAvailableUsers();
   }
 
   refreshAvailableUsers(){
     this.availableUsers = [];
     this.users.forEach(val => this.availableUsers.push(Object.assign({}, val)));
-    //this.availableUsers = [...this.users];
-
     this.selectedUsers.forEach(selectedUser => {      
       if(selectedUser.name !== "unknown"){
           this.removeFromAvailableUsers(selectedUser);

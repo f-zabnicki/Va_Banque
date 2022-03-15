@@ -2,10 +2,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { Player } from '../../models/Player';
-import { CategoryService } from '../../services/category.service';
-import { UsersService } from '../../services/users.service';
 import { takeUntil } from "rxjs/operators";
 import { Category } from 'src/models/category';
+import { UsersService } from 'src/services/User/users.service';
+import { CategoryService } from 'src/services/Category/category.service';
+
 @Component({
   selector: 'app-add-category-and-user',
   templateUrl: './add-category-and-user.component.html',

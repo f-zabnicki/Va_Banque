@@ -3,8 +3,8 @@ import { Guid } from 'guid-typescript';
 import { Category } from 'src/models/category';
 import { Question } from 'src/models/Question';
 import { QuestionTest } from 'src/models/questionTest';
-import { CategoryService } from 'src/services/category.service';
-import { QuestionsService } from 'src/services/questions.service';
+import { CategoryService } from 'src/services/Category/category.service';
+import { QuestionsService } from 'src/services/Questions/questions.service';
 
 @Component({
   selector: 'app-admin-questions-list',

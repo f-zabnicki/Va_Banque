@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Guid } from 'guid-typescript';
 import { Player } from 'src/models/Player';
-import { UsersService } from 'src/services/users.service';
+import { UsersService } from 'src/services/User/users.service';
 
 @Component({
   selector: 'app-user-details-list',

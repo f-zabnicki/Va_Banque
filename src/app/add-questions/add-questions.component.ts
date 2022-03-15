@@ -1,12 +1,11 @@
-import { CategoryService } from './../../services/category.service';
-import { AddEditQuestionsService } from './../../services/add-edit-questions.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Question } from 'src/models/Question';
 import { Category } from 'src/models/category';
-
+import { CategoryService } from 'src/services/Category/category.service';
+import { AddEditQuestionsService } from 'src/services/Add-edit-question/add-edit-questions.service'; 
 
 @Component({
   selector: 'app-add-questions',

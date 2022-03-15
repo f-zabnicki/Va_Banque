@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Guid } from 'guid-typescript';
 import { Player } from 'src/models/Player';
-import { UsersService } from 'src/services/users.service';
+import { UsersService } from 'src/services/User/users.service';
 import { PlayerGameViewComponent } from '../player-game-view/player-game-view.component';
 
 @Component({

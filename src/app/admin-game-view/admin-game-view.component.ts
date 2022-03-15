@@ -4,14 +4,14 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Game } from 'src/models/Game';
 import { QuestionInGame } from 'src/models/QuestionInGame';
 import { PlayerInGame } from 'src/models/PlayerInGame';
-import { GameService } from 'src/services/game-service.service';
-import { PlayerInGameService } from 'src/services/player-in-game.service';
 import { Guid } from 'guid-typescript';
 import { QuestionStatus } from 'src/models/QestionStatus';
-import { QuestionInGameService } from 'src/services/question-in-game.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/models/category';
-import { CategoryService } from 'src/services/category.service';
+import { GameService } from 'src/services/Game-service/game-service.service';
+import { PlayerInGameService } from 'src/services/Player-in-game/player-in-game.service';
+import { CategoryService } from 'src/services/Category/category.service';
+import { QuestionInGameService } from 'src/services/Question-in-game/question-in-game.service';
 
 @Component({
   selector: 'app-admin-game-view',
@@ -38,7 +38,6 @@ export class AdminGameViewComponent implements OnInit {
     private categoryService: CategoryService,
     private questionInGameService: QuestionInGameService,
     private route: ActivatedRoute,
-    private router: Router
   ) {
     this.selectedUser = undefined;
   }

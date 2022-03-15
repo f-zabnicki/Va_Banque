@@ -1,9 +1,9 @@
-import { Question } from '../models/Question';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Guid } from 'guid-typescript';
 import { QuestionTest } from 'src/models/questionTest';
+import { Question } from 'src/models/Question';
 
 @Injectable({
   providedIn: 'root'

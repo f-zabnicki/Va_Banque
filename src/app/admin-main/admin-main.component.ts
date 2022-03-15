@@ -1,14 +1,14 @@
-import { UsersService } from './../../services/users.service';
 import { Component, OnInit } from '@angular/core';
 import { Player } from 'src/models/Player';
-import { CategoryService } from '../../services/category.service';
 import { Category } from '../../models/category';
 import { Guid } from 'guid-typescript';
 import { GameToCreateData } from 'src/models/GameToCreateData';
-import { GameService } from 'src/services/game-service.service';
 import { Question } from 'src/models/Question';
 import { QuestionTest } from 'src/models/questionTest';
-import { QuestionsService } from 'src/services/questions.service';
+import { QuestionsService } from 'src/services/Questions/questions.service';
+import { GameService } from 'src/services/Game-service/game-service.service';
+import { UsersService } from 'src/services/User/users.service';
+import { CategoryService } from 'src/services/Category/category.service';
 
 @Component({
   selector: 'app-admin-main',
