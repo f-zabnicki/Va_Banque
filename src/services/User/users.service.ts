@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, Subject } from 'rxjs';
 import { Player } from 'src/models/Player';
 import { Guid } from 'guid-typescript';
-import { Credentials } from 'src/models/Credentials';
 @Injectable({
   providedIn: 'root'
 })
@@ -30,12 +29,6 @@ export class UsersService {
   }
   remove(id: Guid): Observable<any> {
     return this.http.delete(`${this.url}/player/${id}`);
-  }
-  login(credentials: Credentials): Observable<any>{
-    return this.http.post(`${this.url}/player/login`, credentials);
-  }
-  logOut(id:Guid): Observable<any>{
-    return this.http.put(`${this.url}/player/logout`, id);
   }
   getMyHighestScores(id:Guid): Observable<any>{
     return this.http.get(`${this.url}/player/best?id=${id}`)

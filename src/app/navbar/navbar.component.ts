@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Guid } from 'guid-typescript';
 import { Player } from 'src/models/Player';
+import { AccountService } from 'src/services/Account/account.service';
 import { UsersService } from 'src/services/User/users.service';
 import { PlayerGameViewComponent } from '../player-game-view/player-game-view.component';
 
@@ -16,7 +17,7 @@ export class NavbarComponent implements OnInit {
   isPlayerlogged: boolean = false
   guid?: Guid;
   localStorageValue?: string | null;
-  constructor( private userService : UsersService,  private router:Router) { }
+  constructor( private accountService : AccountService,  private router:Router) { }
 
   ngOnInit(): void {
     this.GetGuid();
@@ -30,7 +31,7 @@ export class NavbarComponent implements OnInit {
     }
   }
   GetUser(){
-    this.userService.getUser(this.guid!).subscribe((user)=>{
+    this.accountService.getAccountDetaills(this.guid!).subscribe((user)=>{
       this.isPlayerlogged = true;
       this.user = user;
     })
@@ -38,7 +39,8 @@ export class NavbarComponent implements OnInit {
 
   Logout(){
     if(this.user != null){
-      this.userService.logOut(this.user.id).subscribe(()=>{
+      console.log(this.user.id);
+      this.accountService.logOut(this.user.id).subscribe(()=>{
         localStorage.clear();
         this.isPlayerlogged = false;
         this.router.navigate(['']);
