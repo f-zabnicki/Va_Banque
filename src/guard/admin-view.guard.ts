@@ -10,9 +10,9 @@ export class AdminViewGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean{
-    if(localStorage.getItem('role') == Role.ADMIN)
+    if(sessionStorage.getItem('role') == Role.ADMIN)
       return true;
-    if(localStorage.getItem('role') == Role.USER)
+    if(sessionStorage.getItem('role') == Role.USER)
       return false;
     return false;
   }

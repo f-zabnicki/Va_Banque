@@ -10,9 +10,9 @@ export class PlayerViewGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean{
-    if(localStorage.getItem('role') == Role.ADMIN)
+    if(sessionStorage.getItem('role') == Role.ADMIN)
       return false;
-    if(localStorage.getItem('role') == Role.USER)
+    if(sessionStorage.getItem('role') == Role.USER)
       return true;
     return false;
   }

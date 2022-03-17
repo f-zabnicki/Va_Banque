@@ -32,9 +32,9 @@ export class LoginPageComponent implements OnInit {
     this.accountService.login(this.form.value).subscribe((player) =>{
       console.log(player);
       this.loggedUser = player;
-      localStorage.setItem('role', player.role);
-      localStorage.setItem('id', player.id);
-      localStorage.setItem('email', player.email);
+      sessionStorage.setItem('role', player.role);
+      sessionStorage.setItem('id', player.id);
+      sessionStorage.setItem('email', player.email);
       if(player.role == Role.ADMIN)
       console.log("dochodzi");
       this.router.navigate(['/va-banque/admin-main']);
