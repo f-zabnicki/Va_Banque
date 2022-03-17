@@ -8,8 +8,8 @@ import { Component, HostListener } from '@angular/core';
 export class AppComponent {
   title = 'Va-Banque';
   //ngOnDestroy implement
-  @HostListener('window:beforeunload')
-  async ngOnDestroy() {
-    localStorage.clear();
-  }
+  // @HostListener('window:beforeunload')
+  // async ngOnDestroy() {
+  //   localStorage.clear();
+  // }
 }
