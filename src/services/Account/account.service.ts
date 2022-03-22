@@ -19,7 +19,7 @@ export class AccountService {
   }
   logOut(id:Guid): Observable<any>{
     console.log(id);
-    return this.http.post(`${this.url}/Account/logout`,id);
+    return this.http.put(`${this.url}/Account/logout/${id.toString()}`, true);
   }
   getAccountDetaills(id:Guid): Observable<any>{
     return this.http.get(`${this.url}/Account/${id}`);

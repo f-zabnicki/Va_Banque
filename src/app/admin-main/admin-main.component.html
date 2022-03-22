@@ -38,7 +38,10 @@
                 <div class="container">
                     <div class="row">
                         <div class="col">
-                            <button class="AddButton" mat-raised-button>Add Category</button>
+                            <button class="AddButton" mat-raised-button (click)="ShowNewCategoryPanel()">Add Category</button>
+                            <div *ngIf="addQuestionFlag">
+                                <app-add-category-and-user (info)="infoFromCategoryChild($event)"></app-add-category-and-user>
+                            </div>
                         </div>
                         <div class="col">
                             <button class="AddButton" [routerLink]="['/va-banque/admin-main/new']" mat-raised-button>Add Question</button>

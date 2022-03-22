@@ -17,6 +17,7 @@ import { CategoryService } from 'src/services/Category/category.service';
 })
 export class AdminMainComponent implements OnInit {
 
+  addQuestionFlag: boolean = false;
   questions: Question[] = [];
   tempQuestion!: QuestionTest[];
   temp!:Category;
@@ -80,6 +81,11 @@ export class AdminMainComponent implements OnInit {
       this.users.push(user)
     })
   }
+
+  infoFromCategoryChild(info: boolean){
+    this.addQuestionFlag = info;
+  }
+
   private updateViewAfterAddingCategory() {
     //remember to unsubscrie
     this.CategoryService.updateListOfCategories$.subscribe((category: Category) => {
@@ -150,6 +156,11 @@ export class AdminMainComponent implements OnInit {
     if (index > -1) {
        this.availableCategories.splice(index, 1);
     }
+  }
+
+  ShowNewCategoryPanel(){
+    this.addQuestionFlag = !this.addQuestionFlag;
+    this.updateViewAfterAddingCategory();
   }
 
   selectNewUser(userDropdown: [Player, number]){

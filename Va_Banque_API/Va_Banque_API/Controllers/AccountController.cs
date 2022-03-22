@@ -28,9 +28,9 @@ namespace Va_Banque_API.Controllers
         return BadRequest(e.Message);
       }
     }
-    [Route("logout")]
-    [HttpPost]
-    public async Task<IActionResult> Logout([FromQuery]Guid id)
+    [Route("logout/{id}")]
+    [HttpPut]
+    public async Task<IActionResult> Logout(Guid id)
     {
       try
       {
