@@ -22,9 +22,13 @@ export class MyRankingComponent implements OnInit {
   }
 
   getMyHighestScores(){
-    this.loggedUserId = localStorage.getItem('id');
+    this.loggedUserId = sessionStorage.getItem('id');
+    console.log("jestem przed ifem");
+    console.log(this.loggedUserId);
     if(this.loggedUserId != null){
+      console.log("jestem tutaj");
       this.userService.getMyHighestScores(Guid.parse(this.loggedUserId)).subscribe((scores)=>{
+        console.log("jestem w subie");
         this.usersRanking = scores;
         console.log(this.usersRanking);
       })
