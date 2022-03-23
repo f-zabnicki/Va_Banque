@@ -18,7 +18,7 @@ import { PlayerWaitingViewComponent } from './player-waiting-view/player-waiting
 const routes: Routes = [
   {path: "va-banque/admin-main/new", component: AddQuestionsComponent, canActivate:[AdminViewGuard] },
   {path: "va-banque/admin-main", component: AdminMainComponent, canActivate:[AdminViewGuard] },
-  {path: 'va-banque/admin-main/questions/edit/:id', component: EditQuestionsComponent, canActivate:[AdminViewGuard] },
+  {path: 'va-banque/admin-main/edit/:id', component: EditQuestionsComponent, canActivate:[AdminViewGuard] },
   {path: "va-banque/admin-main/questions", component: AdminQuestionsListComponent, canActivate:[AdminViewGuard] },
   {path: "va-banque/admin-main/game", component: CreateGameComponent, canActivate:[AdminViewGuard] },
   {path: "va-banque/admin-main/play/:id", component: AdminGameViewComponent, canActivate:[AdminViewGuard] },

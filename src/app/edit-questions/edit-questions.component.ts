@@ -52,7 +52,7 @@ export class EditQuestionsComponent implements OnInit, OnChanges {
         this.AddEditQuestionsService.updateView(question);
         this.formListener()
         this.editedMode = true;
-        window.location.href='va-banque/admin-main/questions';
+        window.location.href='va-banque/admin-main';
       },error=>{
         this.errorMode = true;
       });
