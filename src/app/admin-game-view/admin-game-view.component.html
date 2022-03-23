@@ -6,7 +6,7 @@
                     <div *ngFor="let category of allCategories | slice:0:5" class="col pt-3"><h3>{{category.name}}</h3></div>
                 </div>
                 <div class="row"> 
-                    <button *ngFor="let question of array | slice:0:5" class="col m-1 border border-secondary rounded" [ngStyle]="{'height': '90px', 'background-color': question.status, 'color': 'white', 'font-size': 'xx-large'}"(click)="ShowQuestion(content, question)">{{question.question.points}}</button>
+                    <button *ngFor="let question of array | slice:0:5" class="customTile col m-1 border border-secondary rounded" [ngStyle]="{'height': '90px', 'background-color': question.status, 'color': 'white', 'font-size': 'xx-large'}"(click)="ShowQuestion(content, question)">{{question.question.points}}</button>
                 </div>
                 <div class="row">
                     <button *ngFor="let question of array | slice:5:10" class="col m-1 border border-secondary rounded" [ngStyle]="{'height': '90px', 'background-color': question.status, 'color': 'white', 'font-size': 'xx-large'}"(click)="ShowQuestion(content, question)">{{question.question.points}}</button>
