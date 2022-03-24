@@ -9,6 +9,7 @@ import { QuestionsService } from 'src/services/Questions/questions.service';
 import { GameService } from 'src/services/Game-service/game-service.service';
 import { UsersService } from 'src/services/User/users.service';
 import { CategoryService } from 'src/services/Category/category.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-admin-main',
@@ -17,6 +18,7 @@ import { CategoryService } from 'src/services/Category/category.service';
 })
 export class AdminMainComponent implements OnInit {
 
+  currentTab:number = 0;
   addQuestionFlag: boolean = false;
   questions: Question[] = [];
   tempQuestion!: QuestionTest[];
@@ -35,7 +37,7 @@ export class AdminMainComponent implements OnInit {
   users: Player[] = [];
   categories: Category[] = [];
   displayedColumns: string[] = [];
-  constructor(private gameService: GameService, private CategoryService: CategoryService, private playerService: UsersService, private questionsService: QuestionsService) {
+  constructor( private route: ActivatedRoute, private gameService: GameService, private CategoryService: CategoryService, private playerService: UsersService, private questionsService: QuestionsService) {
     this.availableUsers = new Array<Player>();
     this.selectedCategories = [
       { id: Guid.create(), name: "unknown"},
@@ -51,6 +53,7 @@ export class AdminMainComponent implements OnInit {
     ];
    }
   ngOnInit(): void {
+    this.questionListener();
     this.questionsListListener();
     this.updateViewAfterAddingUser();
     this.updateViewAfterAddingCategory();
@@ -65,6 +68,10 @@ export class AdminMainComponent implements OnInit {
         this.availableCategories.push(category);
       })
     });
+  }
+  questionListener(): void{
+    console.log(this.route.params);
+    this.route.params.subscribe( params => this.currentTab = params.currentTab);
   }
   changeCategoryMode(){
     this.mode = "Category";

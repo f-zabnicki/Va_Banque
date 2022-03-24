@@ -32,7 +32,7 @@
         </div>
         <p>
             <button type="submit" [disabled]="!form.valid" class="btn btn-lg pull-right btn-success" >Add</button>
-            <button class="btn btn-lg btn-light" [routerLink]="['/va-banque/admin-main']">Cancel</button>
+            <button class="btn btn-lg btn-light" [routerLink]="['/va-banque/admin-main',1]">Cancel</button>
         </p>
         <div *ngIf="createdMode" class="alert alert-primary" role="alert">
             Question created successfully
