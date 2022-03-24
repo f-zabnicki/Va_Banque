@@ -37,7 +37,7 @@
         </div>
         <p>
             <button type="submit" [disabled]="!form.valid" class="btn btn-lg pull-right btn-primary"  >Edit</button>
-            <button class="btn btn-lg btn-light" [routerLink]="['/va-banque/admin-main/questions']">Cancel</button>
+            <button class="btn btn-lg btn-light" [routerLink]="['/va-banque/admin-main', 1]">Cancel</button>
 
         </p>
         <div *ngIf="editedMode" class="alert alert-primary" role="alert">

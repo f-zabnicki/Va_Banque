@@ -1,9 +1,9 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router, RouterLink, RouterModule, Routes } from '@angular/router';
+import { Router } from '@angular/router';
 import { Player } from 'src/models/Player';
 import { Role } from 'src/models/role';
-import { UsersService } from 'src/services/User/users.service';
+import { AccountService } from 'src/services/Account/account.service';
 
 @Component({
   selector: 'app-login-page',
@@ -13,7 +13,7 @@ import { UsersService } from 'src/services/User/users.service';
 export class LoginPageComponent implements OnInit {
   errorMode = false;
   loggedUser?: Player;
-  constructor(private usersService : UsersService, private router:Router) { }
+  constructor(private accountService : AccountService, private router:Router) { }
 
   form = new FormGroup({
     username: new FormControl('', Validators.required),
@@ -29,13 +29,12 @@ export class LoginPageComponent implements OnInit {
   onSubmit(){
     console.log(this.form.value);
     localStorage.clear();
-    this.usersService.login(this.form.value).subscribe((player) =>{
+    this.accountService.login(this.form.value).subscribe((player) =>{
       console.log(player);
-      this.usersService.isUserLoggedIn = true;
       this.loggedUser = player;
-      localStorage.setItem('role', player.role);
-      localStorage.setItem('id', player.id);
-      localStorage.setItem('email', player.email);
+      sessionStorage.setItem('role', player.role);
+      sessionStorage.setItem('id', player.id);
+      sessionStorage.setItem('email', player.email);
       if(player.role == Role.ADMIN)
       console.log("dochodzi");
       this.router.navigate(['/va-banque/admin-main']);

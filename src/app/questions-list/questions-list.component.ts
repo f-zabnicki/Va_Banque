@@ -27,6 +27,9 @@ export class QuestionsListComponent implements OnInit {
     })
   }
   deleteQuestion(id: Guid){
-
+    this.questionsService.deleteQuestion(id).subscribe(()=>{
+      this.isLoadingResults = true;
+      this.GetQuestions();
+    })
   }
 }

@@ -15,7 +15,7 @@ namespace Va_Banque_API.Controllers
     {
       _accountLogic = accountLogic;
     }
-    [HttpGet]
+    [HttpPost]
     public async Task<IActionResult> Login([FromBody] Credentials credentials)
     {
       try
@@ -28,6 +28,7 @@ namespace Va_Banque_API.Controllers
         return BadRequest(e.Message);
       }
     }
+    [Route("logout/{id}")]
     [HttpPut]
     public async Task<IActionResult> Logout(Guid id)
     {

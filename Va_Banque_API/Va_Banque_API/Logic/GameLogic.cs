@@ -105,7 +105,13 @@ namespace Va_Banque_API.Logic
 
     private List<PlayerInGame> GetPlayersInGame(GameToCreateDto gameToCreateDto)
     {
-      var players = _mapper.Map<ICollection<PlayerDto>, ICollection<Player>>(gameToCreateDto.Players);
+      List<Player> players = new List<Player>();
+      foreach (var player in gameToCreateDto.Players)
+      {
+        players.Add(_context.Players.FirstOrDefault(p => p.Id == player.Id));
+      }
+
+      //var players = _mapper.Map<ICollection<PlayerDto>, ICollection<Player>>(gameToCreateDto.Players);
 
       if (players.Count < 2)
         throw new InvalidOperationException("The game needs at least 2 players.");

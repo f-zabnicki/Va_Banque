@@ -3,7 +3,7 @@ import { QuestionInGame } from 'src/models/QuestionInGame';
 import { PlayerInGame } from 'src/models/PlayerInGame';
 import { Game } from 'src/models/Game';
 import { Guid } from 'guid-typescript';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Category } from 'src/models/category';
 import { CategoryService } from 'src/services/Category/category.service';
 import { GameService } from 'src/services/Game-service/game-service.service';

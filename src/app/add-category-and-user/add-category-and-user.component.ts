@@ -14,11 +14,9 @@ import { CategoryService } from 'src/services/Category/category.service';
 })
 export class AddCategoryAndUserComponent implements OnInit {
 
-  constructor(private UserService: UsersService, private CategoryService: CategoryService) { }
-  @Input() Mode = "";
+  constructor(private CategoryService: CategoryService) { }
   unsubscribe$: Subject<void> = new Subject<void>();
-  @Output() changeMode = new EventEmitter<any>();
-  users?: Player[];
+  @Output() info = new EventEmitter<any>();
   categories?: Category[];
   form = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -26,23 +24,14 @@ export class AddCategoryAndUserComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit() {
-    if (this.Mode == "Category") {
       this.CategoryService.addCategory(this.form.value).subscribe((category) => {
         this.CategoryService.getAllCategories();
         this.CategoryService.updateView(category);
         this.formListener()
       });
-      this.changeMode.emit(false);
+      this.info.emit(false);
     }
-    else {
-      this.UserService.addUser(this.form.value).subscribe((user) => {
-        this.UserService.getAllUsers();
-        this.UserService.updateView(user);
-        this.formListener()
-      });
-      this.changeMode.emit(false);
-    }
-  }
+
   formListener() {
     this.form.valueChanges
       .pipe(takeUntil(this.unsubscribe$))

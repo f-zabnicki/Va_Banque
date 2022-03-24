@@ -37,7 +37,7 @@ export class AddQuestionsComponent implements OnInit {
         this.AddEditQuestionsService.updateView(question);
         this.createdMode = true;
         this.formListener();
-        window.location.href='va-banque/admin-main/questions';
+        window.location.href='va-banque/admin-main/1';
       },error=>{
         this.errorMode = true;
       });

@@ -1,7 +1,7 @@
 <div *ngIf="!isGame">
     <div id="noGameInfo">
-        <h3>No game</h3>
-        <button class="btn btn-primary"[routerLink]="['/va-banque/ranking']"> <i class="fa fa-eye"></i>L<i class="fa fa-eye" ></i><p>Show Ranking</p></button>
+        <h3>No finished</h3>
+        <button class="btn btn-primary"[routerLink]="['va-banque/player/play']"> <i class="fa fa-eye"></i>L<i class="fa fa-eye" ></i><p>Return</p></button>
     </div>
 </div>
 <div *ngIf="isGame">
@@ -12,19 +12,19 @@
                     <div *ngFor="let category of allCategories" class="col pt-3"><h3>{{category.name}}</h3></div>
                 </div>
                 <div class="row"> 
-                    <div *ngFor="let question of array | slice:0:5" class="col pt-3 m-1 border border-secondary rounded" [ngStyle]="{'height': '90px', 'background-color': question.status, 'color': 'white', 'font-size': 'xx-large'}">{{question.question.points}}</div>
+                    <div *ngFor="let question of array | slice:0:5" class="customTile col m-1 border border-secondary rounded" [ngStyle]="{'height': '90px', 'background-color': question.status, 'color': 'white', 'font-size': 'xx-large'}">{{question.question.points}}</div>
                 </div>
                 <div class="row">
-                    <div *ngFor="let question of array | slice:5:10" class="col pt-3 m-1 border border-secondary rounded" [ngStyle]="{'height': '90px', 'background-color': question.status, 'color': 'white', 'font-size': 'xx-large'}">{{question.question.points}}</div>
+                    <div *ngFor="let question of array | slice:5:10" class="customTile col m-1 border border-secondary rounded" [ngStyle]="{'height': '90px', 'background-color': question.status, 'color': 'white', 'font-size': 'xx-large'}">{{question.question.points}}</div>
                 </div>
                 <div class="row">
-                    <div *ngFor="let question of array | slice:10:15" class="col pt-3 m-1 border border-secondary rounded" [ngStyle]="{'height': '90px', 'background-color': question.status, 'color': 'white', 'font-size': 'xx-large'}">{{question.question.points}}</div>
+                    <div *ngFor="let question of array | slice:10:15" class="customTile col m-1 border border-secondary rounded" [ngStyle]="{'height': '90px', 'background-color': question.status, 'color': 'white', 'font-size': 'xx-large'}">{{question.question.points}}</div>
                 </div>
                 <div class="row">
-                    <div *ngFor="let question of array | slice:15:20" class="col pt-3 m-1 border border-secondary rounded" [ngStyle]="{'height': '90px', 'background-color': question.status, 'color': 'white', 'font-size': 'xx-large'}">{{question.question.points}}</div>
+                    <div *ngFor="let question of array | slice:15:20" class="customTile col m-1 border border-secondary rounded" [ngStyle]="{'height': '90px', 'background-color': question.status, 'color': 'white', 'font-size': 'xx-large'}">{{question.question.points}}</div>
                 </div>
                 <div class="row">
-                    <div *ngFor="let question of array | slice:20:25" class="col pt-3 m-1 border border-secondary rounded" [ngStyle]="{'height': '90px', 'background-color': question.status, 'color': 'white', 'font-size': 'xx-large'}">{{question.question.points}}</div>
+                    <div *ngFor="let question of array | slice:20:25" class="customTile col m-1 border border-secondary rounded" [ngStyle]="{'height': '90px', 'background-color': question.status, 'color': 'white', 'font-size': 'xx-large'}">{{question.question.points}}</div>
                 </div>
             </td>
             <td>
