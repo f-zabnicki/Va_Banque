@@ -11,6 +11,7 @@ namespace Va_Banque_API.Logic
   public class AccountLogic : IAccountLogic
   {
     private readonly DataContext _context;
+    private List<Player> loggedUsers = new List<Player>();
 
     public AccountLogic(DataContext context)
     {
@@ -25,7 +26,7 @@ namespace Va_Banque_API.Logic
     public async Task<Player> Login(Credentials credentials)
     {
       var account = await _context.Players.FirstOrDefaultAsync(p => p.Name.ToLower() == credentials.Username.ToLower() && p.Password == credentials.Password);
-      account.LoggedIn = true;
+      loggedUsers.Add(account);
       await _context.SaveChangesAsync();
 
       return account;
@@ -34,7 +35,7 @@ namespace Va_Banque_API.Logic
     public async Task Logout(Guid id)
     {
       var account = await _context.Players.FirstOrDefaultAsync(p => p.Id == id);
-      account.LoggedIn = false;
+      loggedUsers.Remove(account);
       await _context.SaveChangesAsync();
     }
   }
