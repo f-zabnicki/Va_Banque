@@ -2,9 +2,10 @@ import { Guid } from 'guid-typescript';
 import { Category } from './category';
 
 export interface QuestionTest {
-    id: Guid;
+    id: string;
     content: string;
     answer: string;
-    categoryId: Guid;
+    categoryId: string;
     points: number;
+    category: Category
 }

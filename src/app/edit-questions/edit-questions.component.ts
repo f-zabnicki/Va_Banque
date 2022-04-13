@@ -22,7 +22,7 @@ export class EditQuestionsComponent implements OnInit, OnChanges {
   selectedCategory?: Category;
   
   selectedQuestion!: QuestionTest;
-  id: Guid = Guid.createEmpty();
+  id: string = Guid.createEmpty().toString();
   errorMode = false;
   editedMode = false;
   constructor(private AddEditQuestionsService: AddEditQuestionsService, private CategoryService: CategoryService, private route: ActivatedRoute, private router: Router) { }

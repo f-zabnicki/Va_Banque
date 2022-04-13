@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Guid } from 'guid-typescript';
 import { QuestionTest } from 'src/models/questionTest';
 import { Question } from 'src/models/Question';
 
@@ -21,10 +20,10 @@ export class AddEditQuestionsService {
   getAllQuestions(): Observable<any> {
     return this.http.get(`${this.url}/Question`);
   }
-  editQuestion(question: QuestionTest, id: Guid): Observable<any> {
+  editQuestion(question: QuestionTest, id: string): Observable<any> {
     return this.http.put(`${this.url}/Question/${id}`, question);
   }
-  getQuestion(id: Guid): Observable<any> {
+  getQuestion(id: string): Observable<any> {
     return this.http.get(`${this.url}/Question/${id}`);
   }
   updateView(questions: Question) {

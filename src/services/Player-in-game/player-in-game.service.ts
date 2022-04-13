@@ -13,7 +13,7 @@ export class PlayerInGameService {
   httpOptions={
     headers: new HttpHeaders({"Content-Type":"application-json"}),
   };
-  putPlayerInGame(id: Guid, points: number): Observable<any> {
+  putPlayerInGame(id: string, points: number): Observable<any> {
     console.log(id);
     console.log(points);
     var request = this.http.put(`${this.url}/api/PlayerInGame/?id=${id}`, points);

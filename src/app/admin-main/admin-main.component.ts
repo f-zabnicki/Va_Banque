@@ -40,11 +40,11 @@ export class AdminMainComponent implements OnInit {
   constructor( private route: ActivatedRoute, private gameService: GameService, private CategoryService: CategoryService, private playerService: UsersService, private questionsService: QuestionsService) {
     this.availableUsers = new Array<Player>();
     this.selectedCategories = [
-      { id: Guid.create(), name: "unknown"},
-      { id: Guid.create(), name: "unknown"},
-      { id: Guid.create(), name: "unknown"},
-      { id: Guid.create(), name: "unknown"},
-      { id: Guid.create(), name: "unknown"}
+      { id: Guid.create().toString(), name: "unknown"},
+      { id: Guid.create().toString(), name: "unknown"},
+      { id: Guid.create().toString(), name: "unknown"},
+      { id: Guid.create().toString(), name: "unknown"},
+      { id: Guid.create().toString(), name: "unknown"}
     ];
     this.selectedUsers = [
       { id: Guid.create(), name: "unknown", sumOfPoints: 0},
@@ -106,7 +106,7 @@ export class AdminMainComponent implements OnInit {
   }
   public removeCategory(id: Guid){
     this.CategoryService.remove(id).subscribe(() => {
-      this.categories = this.categories.filter(b => b.id !== id)
+      this.categories = this.categories.filter(b => b.id !== id.toString())
     })
   }
   
@@ -214,11 +214,11 @@ export class AdminMainComponent implements OnInit {
     });
   }
 
-  public deleteQuestion(questionId: Guid){
+  public deleteQuestion(questionId: string){
     console.log(questionId);
     console.log(this.questions);
     this.questionsService.deleteQuestion(questionId).subscribe(() => {
-      this.questions = this.questions.filter(q => q.id !== questionId)
+      this.questions = this.questions.filter(q => q.id !== questionId.toString())
     })
   }
 

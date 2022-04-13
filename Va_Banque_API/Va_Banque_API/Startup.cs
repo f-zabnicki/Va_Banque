@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Va_Banque_API.HubConfig;
 using Va_Banque_API.Interfaces;
 using Va_Banque_API.Logic;
 using Va_Banque_API.Mapper;
@@ -32,7 +33,6 @@ namespace Va_Banque_API
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-
       services.AddControllers();
       services.AddSwaggerGen(c =>
       {
@@ -62,6 +62,11 @@ namespace Va_Banque_API
       services.AddScoped<IAccountLogic, AccountLogic>();
 
       services.AddCors();
+
+      services.AddSignalR(options =>
+      {
+        options.EnableDetailedErrors = true;
+      });
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -70,7 +75,8 @@ namespace Va_Banque_API
       app.UseCors(options =>
       options.WithOrigins("http://localhost:4200")
       .AllowAnyMethod()
-      .AllowAnyHeader());
+      .AllowAnyHeader()
+      .AllowCredentials());
 
       if (env.IsDevelopment())
       {
@@ -86,6 +92,7 @@ namespace Va_Banque_API
       app.UseEndpoints(endpoints =>
       {
         endpoints.MapControllers();
+        endpoints.MapHub<VabanqueHub>("/vabanqueHub");
       });
     }
   }

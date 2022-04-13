@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { QuestionInGame } from 'src/models/QuestionInGame';
 import { PlayerInGame } from 'src/models/PlayerInGame';
 import { Game } from 'src/models/Game';
@@ -7,19 +7,29 @@ import { ActivatedRoute } from '@angular/router';
 import { Category } from 'src/models/category';
 import { CategoryService } from 'src/services/Category/category.service';
 import { GameService } from 'src/services/Game-service/game-service.service';
+import { SignalRService } from 'src/services/SignalR/signal-r.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-player-game-view',
   templateUrl: './player-game-view.component.html',
   styleUrls: ['./player-game-view.component.scss'],
 })
-export class PlayerGameViewComponent implements OnInit {
+export class PlayerGameViewComponent implements OnInit, OnDestroy {
+  
   constructor(
     private httpGame: GameService,
     private route: ActivatedRoute,
-    private categoryService: CategoryService
-  ) {}
+    private categoryService: CategoryService,
+    private signalRService: SignalRService,
+  ) {
+    this.subscription = signalRService.onUpdate().subscribe((res) => {
+      this.users = res.users;
+      this.array = res.questions;
+    })
+  }
 
+  subscription: Subscription;
   allCategories: Category[] = [];
   array: QuestionInGame[] = [];
   cat: number[] = [1, 2, 3, 4, 5];
@@ -28,6 +38,8 @@ export class PlayerGameViewComponent implements OnInit {
   gameid: Guid = Guid.createEmpty();
   ngOnInit(): void {
     this.questionListener();
+    this.signalRService.start();
+    this.signalRService.getGameUpdated();
     this.httpGame.getGame(this.gameid).subscribe((game: Game) => {
       this.isGame = game.isLive;
       this.users = game.players;
@@ -44,9 +56,15 @@ export class PlayerGameViewComponent implements OnInit {
       });
     });
   }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
   questionListener(): void {
     this.route.params.subscribe((params) => (this.gameid = params.id));
   }
+
   reload() {
     window.location.href = '/va-banque/player/play/' + this.gameid;
   }

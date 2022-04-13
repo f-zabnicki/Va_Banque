@@ -22,7 +22,7 @@ export class QuestionsService {
         return questions;
     }
 
-    deleteQuestion(id: Guid) {
+    deleteQuestion(id: string) {
         return this.http.delete(`${this.url}/api/Question/${id}`);
     }
 }

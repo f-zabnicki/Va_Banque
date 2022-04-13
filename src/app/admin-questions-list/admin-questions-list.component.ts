@@ -40,11 +40,11 @@ export class AdminQuestionsListComponent implements OnInit {
     });
   }
 
-  public deleteQuestion(questionId: Guid){
+  public deleteQuestion(questionId: string){
     console.log(questionId);
     console.log(this.questions);
     this.questionsService.deleteQuestion(questionId).subscribe(() => {
-      this.questions = this.questions.filter(q => q.id !== questionId)
+      this.questions = this.questions.filter(q => q.id !== questionId.toString())
     })
   }
 

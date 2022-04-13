@@ -28,11 +28,11 @@ export class CreateGameComponent implements OnInit {
   constructor(private gameService: GameService, private categoriesService: CategoryService, private playerService: UsersService) {
     this.availableUsers = new Array<Player>();
     this.selectedCategories = [
-      { id: Guid.create(), name: "unknown"},
-      { id: Guid.create(), name: "unknown"},
-      { id: Guid.create(), name: "unknown"},
-      { id: Guid.create(), name: "unknown"},
-      { id: Guid.create(), name: "unknown"}
+      { id: Guid.create().toString(), name: "unknown"},
+      { id: Guid.create().toString(), name: "unknown"},
+      { id: Guid.create().toString(), name: "unknown"},
+      { id: Guid.create().toString(), name: "unknown"},
+      { id: Guid.create().toString(), name: "unknown"}
     ];
     this.selectedUsers = [
       { id: Guid.create(), name: "unknown", sumOfPoints: 0},

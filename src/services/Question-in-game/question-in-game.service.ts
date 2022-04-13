@@ -12,13 +12,13 @@ export class QuestionInGameService {
   httpOptions={
     headers: new HttpHeaders({"Content-Type":"application-json"}),
   };
-  getQuestionsInGame(id: Guid): Observable<any> {
+  getQuestionsInGame(id: string): Observable<any> {
     return this.http.get(`${this.url}/api/QuestionsInGame`);
   }
-  postQuestionInGame(id: Guid, correct: boolean): Observable<any> {
+  postQuestionInGame(id: string, correct: boolean): Observable<any> {
     return this.http.post(`${this.url}/api/QuestionsInGame`, {id, correct});
   }
-  putQuestionInGame(id: Guid, correct: boolean): Observable<any> {
+  putQuestionInGame(id: string, correct: boolean): Observable<any> {
     console.log("Idzie w serwisie")
     console.log(correct);
     return this.http.put(`${this.url}/api/QuestionsInGame/?id=${id}`, correct);

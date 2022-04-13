@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Game } from 'src/models/Game';
@@ -12,6 +11,7 @@ import { GameService } from 'src/services/Game-service/game-service.service';
 import { PlayerInGameService } from 'src/services/Player-in-game/player-in-game.service';
 import { CategoryService } from 'src/services/Category/category.service';
 import { QuestionInGameService } from 'src/services/Question-in-game/question-in-game.service';
+import { SignalRService } from 'src/services/SignalR/signal-r.service';
 
 @Component({
   selector: 'app-admin-game-view',
@@ -38,12 +38,15 @@ export class AdminGameViewComponent implements OnInit {
     private categoryService: CategoryService,
     private questionInGameService: QuestionInGameService,
     private route: ActivatedRoute,
+    private signalRService: SignalRService
   ) {
     this.selectedUser = undefined;
   }
 
   ngOnInit(): void {
     this.questionListener();
+    this.signalRService.start();
+    this.signalRService.startConnection("informacje");
     this.httpGame.getGame(this.gameid).subscribe((game: Game) => {
       console.log(game);
       this.users = game.players;
@@ -59,26 +62,13 @@ export class AdminGameViewComponent implements OnInit {
           this.allCategories?.push(category!);
         }
       });
-
-      /*
-      for (var i = 0; i < 5; i++) {
-        this.categoryService
-          .getCategory(this.array[i].question.categoryId)
-          .subscribe((cat) => {
-            this.allCategories?.push(cat);
-            console.log(cat);
-          });
-      }
-      */
-      //this.allCategories.sort((a,b)=> this.sortCategories(a,b));
       console.log(this.allCategories);
       console.log(this.array);
-      // this.array.forEach(element => {
-      //   this.categoryService.getCategory(element.question.categoryId).subscribe((cat)=>{
-      //     this.allCategories.push(cat);
-      //   })
-      // });
     });
+  }
+
+  updateSignalR(){
+    this.signalRService.updateGame(this.users, this.array);
   }
 
   sortArray(ob1: QuestionInGame, ob2: QuestionInGame) {
@@ -119,6 +109,7 @@ export class AdminGameViewComponent implements OnInit {
         this.removeFromActiveUsers(this.selectedUser!);
         this.selectedUser = undefined;
         this.users.sort((a, b) => (a.points > b.points ? -1 : 1));
+        this.updateSignalR();
       });
   }
   endGame() {
@@ -133,14 +124,15 @@ export class AdminGameViewComponent implements OnInit {
       .subscribe(() => {
         this.activeUsers = [...this.users];
         this.selectedUser!.points += question!.question.points;
-
+        
         this.questionInGameService
-          .putQuestionInGame(question.id, true)
-          .subscribe(() => {
-            this.activeUsers = [...this.users];
-            question.status = QuestionStatus.GREEN;
-            this.selectedUser = undefined;
-            this.users.sort((a, b) => (a.points > b.points ? -1 : 1));
+        .putQuestionInGame(question.id, true)
+        .subscribe(() => {
+          this.activeUsers = [...this.users];
+          question.status = QuestionStatus.GREEN;
+          this.selectedUser = undefined;
+          this.users.sort((a, b) => (a.points > b.points ? -1 : 1));
+          this.updateSignalR();
           });
       });
   }
@@ -153,6 +145,7 @@ export class AdminGameViewComponent implements OnInit {
         this.activeUsers = [...this.users];
         question.status = QuestionStatus.RED;
         this.selectedUser = undefined;
+        this.updateSignalR();
       });
   }
 

@@ -2,7 +2,7 @@ import { Guid } from 'guid-typescript';
 import { Category } from './category';
 
 export interface Question {
-    id: Guid;
+    id: string;
     content: string;
     answer: string;
     category: Category;

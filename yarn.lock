@@ -259,6 +259,11 @@
   dependencies:
     "tslib" "^2.2.0"
 
+"@aspnet/signalr@^1.0.27":
+  "integrity" "sha512-utZvBF9snjdwIBpvcFa6htqFTVaTN50QIZUoiznKpYSZImew1a1Ci7VYmK8HODqwRqUtj0o5/xR1nzt8xex5sA=="
+  "resolved" "https://registry.npmjs.org/@aspnet/signalr/-/signalr-1.0.27.tgz"
+  "version" "1.0.27"
+
 "@assemblyscript/loader@^0.10.1":
   "integrity" "sha512-H71nDOOL8Y7kWRLqf6Sums+01Q5msqBW2KhDUTemh1tvY04eSkSXrK0uj/4mmY0Xr16/3zyZmsrxN7CKuRbNRg=="
   "resolved" "https://registry.npmjs.org/@assemblyscript/loader/-/loader-0.10.1.tgz"

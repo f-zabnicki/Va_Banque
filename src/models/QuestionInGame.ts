@@ -4,7 +4,7 @@ import { Question } from "./Question";
 import { QuestionTest } from "./questionTest";
 
 export interface QuestionInGame{
-    id: Guid;
+    id: string;
     question: QuestionTest;
     status: QuestionStatus;
 }
